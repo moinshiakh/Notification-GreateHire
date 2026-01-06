@@ -47,13 +47,13 @@ const NotificationForm = ({ onSubmit }) => {
         </div>
 
         <div className="form-group">
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message">Applid For</label>
           <textarea
             id="message"
             name="message"
             value={formData.message}
             onChange={handleChange}
-            placeholder="Enter notification message"
+            placeholder="Applid for ...."
             rows="4"
             required
           />
@@ -68,10 +68,12 @@ const NotificationForm = ({ onSubmit }) => {
               value={formData.type}
               onChange={handleChange}
             >
-              <option value="info">Info</option>
-              <option value="success">Success</option>
-              <option value="warning">Warning</option>
-              <option value="error">Error</option>
+            
+              <option value="selected">Selected</option>
+              <option value="rejected">Rejected</option>
+              <option value="pending">Pending</option>
+              <option value="process">Process</option>
+              
             </select>
           </div>
 

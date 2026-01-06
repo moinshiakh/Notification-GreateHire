@@ -15,9 +15,10 @@ const NotificationBell = ({ notifications, unreadCount, onMarkAsRead, onMarkAllA
 
   const getTypeIcon = (type) => {
     switch (type) {
-      case 'success': return '✅';
-      case 'warning': return '⚠️';
-      case 'error': return '❌';
+      case 'selected': return '✅';
+      case 'rejected': return '⚠️';
+      case 'pending': return '❌';
+     case 'process': return '🔃';
       default: return 'ℹ️';
     }
   };
