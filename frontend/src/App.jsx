@@ -98,7 +98,7 @@ function App() {
         />
       </header>
       
-      <main className="app-main">
+      <main className={`app-main ${currentView === 'viewall' ? 'full-width' : ''}`}>
         {currentView === 'dashboard' ? (
           <>
             <div className="form-section">
