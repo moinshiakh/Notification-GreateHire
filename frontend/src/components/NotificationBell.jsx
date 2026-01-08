@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './NotificationBell.css';
 
-const NotificationBell = ({ notifications, unreadCount, onMarkAsRead, onMarkAllAsRead, onDelete }) => {
+const NotificationBell = ({ notifications, unreadCount, onMarkAsRead, onMarkAllAsRead, onDelete, onViewAll }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggleDropdown = () => {
@@ -93,6 +93,14 @@ const NotificationBell = ({ notifications, unreadCount, onMarkAsRead, onMarkAllA
           {notifications.length > 5 && (
             <div className="dropdown-footer">
               <p>+{notifications.length - 5} more notifications</p>
+            </div>
+          )}
+          
+          {notifications.length > 0 && (
+            <div className="dropdown-footer">
+              <button className="view-all-btn" onClick={onViewAll}>
+                View All Notifications
+              </button>
             </div>
           )}
         </div>

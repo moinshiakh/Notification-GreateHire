@@ -74,7 +74,7 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Notification System</h1>
-        <nav className="nav-buttons">
+        {/* <nav className="nav-buttons">
           <button 
             className={`nav-btn ${currentView === 'dashboard' ? 'active' : ''}`}
             onClick={() => setCurrentView('dashboard')}
@@ -87,13 +87,14 @@ function App() {
           >
             View All ({notifications.length})
           </button>
-        </nav>
+        </nav> */}
         <NotificationBell 
           notifications={notifications}
           unreadCount={unreadCount}
           onMarkAsRead={markAsRead}
           onMarkAllAsRead={markAllAsRead}
           onDelete={deleteNotification}
+          onViewAll={() => setCurrentView('viewall')}
         />
       </header>
       

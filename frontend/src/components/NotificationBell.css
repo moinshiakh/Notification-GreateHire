@@ -185,6 +185,23 @@
   font-size: 0.9rem;
 }
 
+.view-all-btn {
+  width: 100%;
+  padding: 8px 16px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background 0.2s;
+  margin-top: 5px;
+}
+
+.view-all-btn:hover {
+  background: #0056b3;
+}
+
 @media (max-width: 480px) {
   .notification-dropdown {
     width: 300px;

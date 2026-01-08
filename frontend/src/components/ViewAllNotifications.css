@@ -1,4 +1,4 @@
-.view-all-notifications {
+/* .view-all-notifications {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
@@ -222,5 +222,257 @@
   .notification-actions {
     margin-left: 0;
     justify-content: flex-end;
+  }
+} */
+
+/* Root */
+.view-all-notifications {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  font-family: "Inter", system-ui, sans-serif;
+  background: #f8fafc;
+}
+
+/* ================= HEADER ================= */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  margin-bottom: 24px;
+}
+
+.page-header h1 {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: #0f172a;
+}
+
+.header-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.total-count,
+.unread-count {
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 6px 10px;
+  border-radius: 20px;
+  background: #e2e8f0;
+  color: #334155;
+}
+
+.unread-count {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+/* Buttons */
+.btn-secondary {
+  background: #0ea5e9;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-secondary:hover {
+  background: #0284c7;
+}
+
+.btn-danger {
+  background: #ef4444;
+  color: #fff;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.btn-danger:hover {
+  background: #dc2626;
+}
+
+/* ================= LIST ================= */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ================= ITEM ================= */
+.notification-item {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 16px;
+  background: #ffffff;
+  border-radius: 14px;
+  border-left: 4px solid transparent;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.04);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.notification-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.08);
+}
+
+.notification-item.unread {
+  background: #f0f9ff;
+  border-left-color: #0ea5e9;
+}
+
+/* ================= CONTENT ================= */
+.notification-content {
+  flex: 1;
+}
+
+.notification-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.type-icon {
+  font-size: 1.2rem;
+}
+
+.notification-title {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #0f172a;
+  flex: 1;
+}
+
+/* Priority Badge */
+.priority-badge {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  padding: 4px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.priority-badge.high {
+  background: #fee2e2;
+  color: #b91c1c;
+}
+
+.priority-badge.medium {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.priority-badge.low {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.notification-message {
+  font-size: 0.95rem;
+  color: #475569;
+  margin: 4px 0 10px;
+  line-height: 1.4;
+}
+
+.notification-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  font-size: 0.75rem;
+  color: #64748b;
+}
+
+/* ================= ACTIONS ================= */
+.notification-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.btn-read,
+.btn-delete {
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-read {
+  background: #22c55e;
+  color: #fff;
+}
+
+.btn-read:hover {
+  background: #16a34a;
+}
+
+.btn-delete {
+  background: #f1f5f9;
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+}
+
+/* ================= EMPTY STATE ================= */
+.empty-state {
+  text-align: center;
+  padding: 60px 20px;
+  color: #64748b;
+}
+
+.empty-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.empty-state h3 {
+  margin-bottom: 6px;
+  color: #0f172a;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .notification-item {
+    flex-direction: column;
+  }
+
+  .notification-actions {
+    flex-direction: row;
+    justify-content: flex-end;
+  }
+
+  .page-header h1 {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .btn-secondary,
+  .btn-danger {
+    flex: 1;
+    text-align: center;
   }
 }
