@@ -3,11 +3,13 @@ import axios from 'axios';
 import NotificationForm from './components/NotificationForm';
 import NotificationBell from './components/NotificationBell';
 import Dashboard from './components/Dashboard';
+import ViewAllNotifications from './components/ViewAllNotifications';
 import './App.css';
 
 function App() {
   const [notifications, setNotifications] = useState([]);
   const [unreadCount, setUnreadCount] = useState(0);
+  const [currentView, setCurrentView] = useState('dashboard'); // 'dashboard' or 'viewall'
 
   const fetchNotifications = async () => {
     try {
@@ -55,6 +57,15 @@ function App() {
     }
   };
 
+  const clearAllNotifications = async () => {
+    try {
+      await axios.delete('/api/notifications');
+      fetchNotifications();
+    } catch (error) {
+      console.error('Error clearing notifications:', error);
+    }
+  };
+
   useEffect(() => {
     fetchNotifications();
   }, []);
@@ -63,6 +74,20 @@ function App() {
     <div className="app">
       <header className="app-header">
         <h1>Notification System</h1>
+        <nav className="nav-buttons">
+          <button 
+            className={`nav-btn ${currentView === 'dashboard' ? 'active' : ''}`}
+            onClick={() => setCurrentView('dashboard')}
+          >
+            Dashboard
+          </button>
+          <button 
+            className={`nav-btn ${currentView === 'viewall' ? 'active' : ''}`}
+            onClick={() => setCurrentView('viewall')}
+          >
+            View All ({notifications.length})
+          </button>
+        </nav>
         <NotificationBell 
           notifications={notifications}
           unreadCount={unreadCount}
@@ -73,17 +98,29 @@ function App() {
       </header>
       
       <main className="app-main">
-        <div className="form-section">
-          <NotificationForm onSubmit={createNotification} />
-        </div>
-        
-        <div className="dashboard-section">
-          <Dashboard 
+        {currentView === 'dashboard' ? (
+          <>
+            <div className="form-section">
+              <NotificationForm onSubmit={createNotification} />
+            </div>
+            
+            <div className="dashboard-section">
+              <Dashboard 
+                notifications={notifications}
+                onMarkAsRead={markAsRead}
+                onDelete={deleteNotification}
+              />
+            </div>
+          </>
+        ) : (
+          <ViewAllNotifications 
             notifications={notifications}
             onMarkAsRead={markAsRead}
             onDelete={deleteNotification}
+            onMarkAllAsRead={markAllAsRead}
+            onClearAll={clearAllNotifications}
           />
-        </div>
+        )}
       </main>
     </div>
   );
