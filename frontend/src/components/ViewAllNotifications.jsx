@@ -17,7 +17,8 @@ const ViewAllNotifications = ({ notifications, onMarkAsRead, onDelete, onMarkAll
   };
 
   return (
-    <div className="view-all-notifications">
+    <div className="view-all-notifications" style={{ width: "100%" }}>
+
       <div className="page-header">
         <h1>All Notifications</h1>
         <div className="header-actions">
